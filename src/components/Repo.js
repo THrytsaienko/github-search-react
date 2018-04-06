@@ -1,0 +1,45 @@
+import React from 'react';
+import Moment from 'react-moment';
+
+export default class Repo extends React.Component {
+	render(){
+		return (
+			<div>
+				<div className="repo">
+					<p className="repo__count">{this.props.count}</p>
+					<div className="repo__data">
+						<a href={this.props.url} target="_blank">{this.props.name}</a>
+						<p>{this.props.description}</p>
+						<div className="repo__date">
+							<p>Created: <span><Moment format="DD.MM.YYYY">
+								{this.props.created}
+							</Moment></span></p>
+							<p>Updated: <span><Moment format="DD.MM.YYYY">
+								{this.props.updated}
+							</Moment></span></p>
+						</div>
+					</div>
+					<div className="repo__numbers">
+						<svg className="svg-star" fill="#7c7e7d" height="24" viewBox="0 0 18 18" width="24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+							<path d="M0 0h18v18H0z" fill="none"/>
+						</svg>
+						<span className="repo__stars">{this.props.stars}</span>
+						<svg className="svg-fork" fill="#7c7e7d" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0 0h24v24H0z" fill="none"/>
+							<path d="M14 4l2.29 2.29-2.88 2.88 1.42 1.42 2.88-2.88L20 10V4zm-4 0H4v6l2.29-2.29 4.71 4.7V20h2v-8.41l-5.29-5.3z"/>
+						</svg>
+						<span className="repo__forks">{this.props.forks}</span>
+						<svg className="svg-issue" fill="#7c7e7d" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0 0h24v24H0z" fill="none"/>
+							<path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>
+						</svg>
+						<span className="repo__issues">{this.props.issues}</span>
+						{(this.props.language) && (<p className="repo__language">{this.props.language}</p>)}
+					</div>
+				</div>
+				<hr />
+			</div>
+		)
+	}
+}
