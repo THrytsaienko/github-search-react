@@ -15,15 +15,18 @@ export default class App extends React.Component {
 
 	handleSearch = (userName) => {
 		if (userName === this.userOne || userName === this.userTwo) {
-			this.setState(() => ({ error: false }));
-			this.getProfile(userName);
+			if (this.prevUser !== userName) {
+				this.setState(() => ({ error: false }));
+				this.getProfile(userName);
+			}
 		} else {
-			this.setState(() => ({ 
+			this.setState(() => ({
 				error: true,
 				profile: {},
 				repos: [],
-			 }));
+			}));
 		}
+		this.prevUser = userName;
 	}
 
 	getProfile(userName) {

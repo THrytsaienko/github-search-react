@@ -36996,10 +36996,12 @@ var App = function (_React$Component) {
 			writable: true,
 			value: function value(userName) {
 				if (userName === _this.userOne || userName === _this.userTwo) {
-					_this.setState(function () {
-						return { error: false };
-					});
-					_this.getProfile(userName);
+					if (_this.prevUser !== userName) {
+						_this.setState(function () {
+							return { error: false };
+						});
+						_this.getProfile(userName);
+					}
 				} else {
 					_this.setState(function () {
 						return {
@@ -37009,6 +37011,7 @@ var App = function (_React$Component) {
 						};
 					});
 				}
+				_this.prevUser = userName;
 			}
 		}), _temp), _possibleConstructorReturn(_this, _ret);
 	}
